@@ -15,6 +15,7 @@ public class Car {
     private Integer hoursePower;
     private LocalDate fistCirculationDate;
     private String licensePlate;
+
     /**
      * Default Constructor
      */

@@ -34,22 +34,21 @@ public class DemoApplication {
 		Car myFiat= new Car("Fiat", "500", 34, LocalDate.of(1982, Month.AUGUST, 25), "TR-987-KV");
 
 		//Example of direct injection of Object into DataCacheStorage.
-		// Possible but not recommanded because you do not set an expiration date on your data
+		// Possible but not recommanded because you don't set an expiration date at your data
 		demoService.exampleInjectionDacasElementIntoDacas(myBeetle);
 
 		//Example of good practice for injection of Object into DataCacheStorage.
 		//Your object is packaged into DacasElement.
 		demoService.exampleInjectionDacasElementIntoDacasWithBuilder(myFiat);
 
-		// We force backup before scheduled task execution
+		// We force backup before scheduled task execution (for this application example)
 		demoService.forceBackup();
 
-		// Example to acces your data
+		// Example of acces to your data
 		Car myBeetleRecovered = demoService.exampleAccessToYourData("MB-123-RC");
 		Car myFiatRecovered = demoService.exampleAccessToYourData("TR-987-KV");
-		logger.info("myBeetle : " + myBeetleRecovered.getBrand());
-
-		// Some of other methodes permit you to get some informations about your data
+		logger.info("myBeetle : " + myBeetleRecovered.getHoursePower());
+		logger.info("myFiatRecovered : " + myFiatRecovered.getHoursePower());
 
 	}
 

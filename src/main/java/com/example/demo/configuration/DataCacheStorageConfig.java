@@ -54,11 +54,17 @@ public class DataCacheStorageConfig {
         return dacasManager;
     }
 
+    /**
+     * Schedule task for automatically purge expired elements on memory
+     */
     @Scheduled(initialDelay = 1000*30, fixedDelay = 1000*60*30)
     private void purge() {
         DacasTransaction.purge();
     }
 
+    /**
+     * Schedule task for automatically copy elements in memory to backup file
+     */
     @Scheduled(initialDelay = 1000*60, fixedDelay = 1000*60*60)
     private void autoPush(){
         DacasTransaction.push();

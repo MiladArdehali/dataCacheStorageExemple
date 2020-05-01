@@ -28,9 +28,11 @@ public class DemoService {
     }
 
     /**
-     * Exemple to inject Object into DataCacheStorage.
+     * Example of injecting Object into DataCacheStorage.
+     * <p>
+     *     <u>Insert Objects in Dacas without package them into a DacasElement is not recommanded</u>
+     * </p>
      * @param carToInject
-     * <u>Insert Objects in Dacas without package them into a DacasElement is not recommanded</u>
      */
     public void exampleInjectionObjectDataIntoDacas(Car carToInject) {
         // Commit direct into dacaStorage
@@ -83,8 +85,8 @@ public class DemoService {
      * Example of pushing element in memory into dacasmemoriesvalues.dacas file
      */
     public void forceBackup() {
-        // If DataCacheStorage support storage is configured as a file.
-        // Push method send all data from memory into file referenced into properties.
+        // If you configures storage support as a file,
+        // method push() send all data from memory into file referenced into properties file.
         // Before writing, all expired data will be flushed.
         dacasManager.dacaStorage.push();
 
