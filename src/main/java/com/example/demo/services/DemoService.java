@@ -1,10 +1,8 @@
 package com.example.demo.services;
 
-
 import com.digilion.dataAccessClass.element.DacasElement;
-import com.digilion.dataAccessClass.manager.DacasManager;
+import com.digilion.dataAccessClass.transaction.DacasTransaction;
 import com.example.demo.bo.Car;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -17,9 +15,6 @@ import java.time.LocalDateTime;
  */
 @Service
 public class DemoService {
-
-    @Autowired
-    public DacasManager dacasManager;
 
     /**
      * Default Constructor
@@ -36,11 +31,12 @@ public class DemoService {
      */
     public void exampleInjectionObjectDataIntoDacas(Car carToInject) {
         // Commit direct into dacaStorage
-        dacasManager.dacaStorage.commit(carToInject.getLicensePlate(), carToInject);
+        // As you don't define DateTimeStorage and/or ExpiredDateTime; Object will be mapped into DacasElement with default values defined on configuraton is set.
+        DacasTransaction.commit(carToInject.getLicensePlate(), carToInject);
     }
 
     /**
-     * Exemple to inject Object into DataCacheStorage.
+     * Example to inject Object packaged into DacasElement to DataCacheStorage.
      * @param carToInject
      */
     public void exampleInjectionDacasElementIntoDacas(Car carToInject) {
@@ -53,11 +49,11 @@ public class DemoService {
         dacasElement.setExpiredDateTime(now.plusHours(2));
 
         // Commit your object packaged into DacasElement in dacasStrorage
-        dacasManager.dacaStorage.commit(carToInject.getLicensePlate(), carToInject);
+        DacasTransaction.commit(carToInject.getLicensePlate(), dacasElement);
     }
 
     /**
-     * Exemple to inject Object into DataCacheStorage with DacasElementBuilder.
+     * Example to inject Object packaged into DacasElement (using Builder) to DataCacheStorage.
      * @param carToInject
      */
     public void exampleInjectionDacasElementIntoDacasWithBuilder(Car carToInject) {
@@ -67,7 +63,7 @@ public class DemoService {
         dacasElementBuilder = new DacasElement.DacasElementBuilder<>().value(carToInject).dateTimeStorage(now).lifeTime(now.plusHours(2)).build();
 
         // Commit your object packaged into DacasElement in dacasStrorage
-        dacasManager.dacaStorage.commit(carToInject.getLicensePlate(), dacasElementBuilder);
+        DacasTransaction.commit(carToInject.getLicensePlate(), dacasElementBuilder);
     }
 
     /**
@@ -78,7 +74,7 @@ public class DemoService {
     public Car exampleAccessToYourData(String key) {
         // When you recover your value, you directly recover your value and not a DacasElement.
         // Cast your recovered data, that's all.
-        return (Car) dacasManager.dacaStorage.get(key);
+        return (Car) DacasTransaction.get(key);
     }
 
     /**
@@ -88,10 +84,8 @@ public class DemoService {
         // If you configures storage support as a file,
         // method push() send all data from memory into file referenced into properties file.
         // Before writing, all expired data will be flushed.
-        dacasManager.dacaStorage.push();
+        DacasTransaction.push();
 
     }
-
-
 
 }

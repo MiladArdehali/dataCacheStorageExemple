@@ -20,14 +20,38 @@
       },
       "licensePlate" : "MB-123-RC"
     },
-    "expiredDateTime" : [ 2020, 5, 3, 0, 0, 15, 397000000 ],
-    "dateTimeStorage" : [ 2020, 5, 2, 0, 0, 15, 397000000 ]
+    "expiredDateTime" : [ 2020, 5, 2, 21, 51, 41, 226000000 ],
+    "dateTimeStorage" : [ 2020, 5, 2, 19, 51, 41, 226000000 ]
+  },
+  "GT-987-LM" : {
+    "value" : {
+      "brand" : "Ford",
+      "model" : "GT",
+      "hoursePower" : 550,
+      "fistCirculationDate" : {
+        "year" : 1991,
+        "month" : "NOVEMBER",
+        "chronology" : {
+          "calendarType" : "iso8601",
+          "id" : "ISO"
+        },
+        "dayOfWeek" : "SUNDAY",
+        "era" : "CE",
+        "dayOfYear" : 307,
+        "leapYear" : false,
+        "monthValue" : 11,
+        "dayOfMonth" : 3
+      },
+      "licensePlate" : "GT-987-LM"
+    },
+    "expiredDateTime" : [ 2020, 5, 2, 21, 51, 41, 227000000 ],
+    "dateTimeStorage" : [ 2020, 5, 2, 19, 51, 41, 227000000 ]
   },
   "TR-987-KV" : {
     "value" : {
       "brand" : "Fiat",
       "model" : "500",
-      "hoursePower" : 34,
+      "hoursePower" : 38,
       "fistCirculationDate" : {
         "year" : 1982,
         "month" : "AUGUST",
@@ -44,7 +68,7 @@
       },
       "licensePlate" : "TR-987-KV"
     },
-    "expiredDateTime" : [ 2020, 5, 2, 2, 0, 15, 397000000 ],
-    "dateTimeStorage" : [ 2020, 5, 2, 0, 0, 15, 397000000 ]
+    "expiredDateTime" : [ 2020, 5, 3, 19, 51, 41, 227000000 ],
+    "dateTimeStorage" : [ 2020, 5, 2, 19, 51, 41, 227000000 ]
   }
 }
